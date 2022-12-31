@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         when {
             isOperator -> {
                 val text = expressionTextView.text.toString()
-                expressionTextView.text = text.dropLast(1) + operator
+                expressionTextView.text = text.dropLast(1) + operator // 연산자 -> 다른 연산자로 바꿔치는거 !
 
             }
             hasOperator -> {
@@ -157,8 +157,8 @@ class MainActivity : AppCompatActivity() {
         resultTextView.text = ""
         expressionTextView.text = resultText
 
-        isOperator = false
-        hasOperator = false
+        isOperator = false // 연산자를 치고 숫자를 칠때 띄워쓰기 위해서 만듬 !
+        hasOperator = false // 연산자를 아직 누른적 없다 !
 
 
     }
@@ -231,7 +231,7 @@ class MainActivity : AppCompatActivity() {
 
 fun String.isNumber(): Boolean {
     return try {
-        this.toBigInteger()
+        this.toBigInteger() //this.toInt 대신 사용 |  Int 는 21억 4천까지인데, 이건 무한이기때문 !
         true
     } catch (e: NumberFormatException) {
         false
